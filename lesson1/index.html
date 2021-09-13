@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+<style>
+    .redText {
+        color: red;
+    }
+    .blueText {
+        color: blue;
+    }
+    .smallSize {
+        font-size: 10px;
+    }
+    .bigSize {
+        font-size: 20px;
+    }
+</style>
+
+<div id="Vue">
+
+    <!--
+        :attribute="value"
+
+    -->
+    <div :class="colorText">
+        <p>Display data</p>
+        {{message + ' ' + name | hi | changeName }}
+    </div>
+    => render to Html with colorText="redText"
+    <div class="redText">
+
+    </div>
+    => render to Html with colorText="blueText"
+    <div class="blueText">
+
+    </div>
+    <!--
+        :class="<array>" => class="class1 class2"
+    -->
+    <div :class="ManyClass">
+        many class
+    </div>
+    <p>Object for style</p>
+    <div :style="StyleVue">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias aliquid amet aperiam at corporis debitis dignissimos dolore enim eos expedita laborum, maiores minima necessitatibus quas quia reprehenderit rerum sint.
+    </div>
+
+    <div>
+        <p>Computed</p>
+        {{helloComputed | hi | changeName}}
+    </div>
+    <div>
+        <p>Function</p>
+        {{helloword() | hi | changeName}}
+    </div>
+    <div>
+        <p>Watcher</p>
+        <input type="text" v-model="USDToVND"> {{USDToVND}}
+        <p>Render one element</p>
+<!--        <p v-if="USDToVND > 40000">BUY</p>--> =>  <p>BUY</p> or <p>SELL</p>
+<!--        <p v-else>SELL</p>-->
+        <p>Render two element => one element show view</p>
+        <p v-show="USDToVND > 40000">BUY</p> => <p style="display: 'none'">BUY</p>
+        <p v-show="USDToVND <= 40000">SELL</p> =>  <p style="display: 'show'">SELL</p>
+    </div>
+
+    <div>
+        <p>VModelTrim</p>
+        <input type="text" v-model.trim="VModelTrim">
+    </div>
+
+    <div>
+        <h2>Sum number</h2>
+        <div>
+            <label>A:</label>
+            <input type="number" v-model.number="NumberA">
+        </div>
+        <div>
+            <label>B:</label>
+            <input type="number" v-model.number="NumberB">
+        </div>
+        <div>
+            Total by event: {{SumNumber}}
+        </div>
+        <div>
+            Total by computed: {{SumNumberComputed}}
+        </div>
+        <button @click="onClickToSum()">
+            Sum
+        </button>
+<!--        <div>-->
+<!--            Product-->
+<!--            {{JSON.stringify(this.products)}}-->
+<!--        </div>-->
+        <p>For name</p>
+        <div v-for="(name, index) in ArrayName">
+            {{index}}: {{name}}
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3" v-for="(product) in products">
+                <div class="card">
+                    <img :src="product.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <a href="#" class="btn btn-primary">BUY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#Vue",
+        data() {
+            return  {
+                VModelTrim: '',
+                NumberA: 0,
+                NumberB: 0,
+                SumNumber: 0,
+
+                message: "Hello",
+                name: 'Jinat',
+                USDToVND: 23000,
+                colorText: 'redText',
+                ManyClass: ['blueText', 'smallSize'],
+                StyleVue: {
+                    color: "yellow",
+                    background: "silver",
+                    borderBottom: '1px solid magenta'
+                },
+                ArrayName: ['VND', 'USD', 'JPN', 'DDD'],
+                products: []
+            }
+        },
+        filters: {
+            hi: function (value) {
+                return value.replace('Hello', 'Hi')
+            },
+            changeName: function (value) {
+                return value.replace('Jinat', 'Cuong')
+            }
+        },
+        computed: {
+            /**
+             * Cached
+             * @returns {string}
+             */
+            helloComputed: function () {
+                // alert('Run computed')
+                return this.message + ' ' + this.name;
+            },
+            SumNumberComputed: function () {
+               return this.NumberA + this.NumberB
+            }
+        },
+        watch: {
+            USDToVND: function (newValue, oldValue) {
+                alert(`New value: ${newValue}. Old value: ${oldValue}. Change Value: ${newValue - oldValue}`)
+            },
+            VModelTrim: function (newValue, oldValue) {
+                alert(newValue.length)
+            },
+        },
+        methods: {
+            /**
+             * No cache
+             * @returns {string}
+             */
+            helloword: function () {
+                // alert('Run Hello')
+                return this.message + ' ' + this.name;
+            },
+            onClickToSum: function () {
+                // this.SumNumber = parseInt(this.NumberA) + parseInt(this.NumberB)
+                this.SumNumber = this.NumberA + this.NumberB
+            },
+            getProducts() {
+                fetch("https://fakestoreapi.com/products").then((response) => {
+                    console.log('response', response)
+                    response.json().then(data => {
+                        console.log('data', data)
+                        this.products = data
+                        // this.product = data => change value => updated working => this.product = data => updated working
+                    })
+                })
+            }
+        },
+        /**
+         * Life Hook on Vue
+         */
+        beforeCreate() {
+            console.log("beforeCreate")
+        },
+        created() {
+            this.getProducts()
+            console.log("created")
+        },
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        mounted() {
+            // this.getProducts()
+            console.log("mounted")
+        },
+        beforeUpdate() {
+            console.log("beforeUpdate")
+        },
+        updated() {
+            // this.getProducts() => this.product = data => change value => updated working => this.product = data => updated working
+            console.log("updated")
+        },
+        beforeDestroy() {
+            console.log("beforeDestroy")
+        },
+        destroyed() {
+            // this.getProducts()
+            console.log("destroyed")
+        },
+    })
+</script>
+</body>
+</html>
