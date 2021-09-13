@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div id="app" class="container">
+    <h1>Todo</h1>
+    <div>
+        <h2>Create new Task</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter task name">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" >Add</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>List inactive</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th style="width: 10%"></th>
+            </tr>
+            <tr>
+                <td>Task inactive</td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-danger">Active</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h2>List Active</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th style="width: 10%"></th>
+            </tr>
+            <tr>
+                <td>Task active</td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-danger">Remove</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        Total: 2
+    </div>
+
+    <div>
+        <p>Write to complete todo list example</p>
+        - Get tasks data for List inactive and list active
+        - Event Create Task
+        - Event Active Task
+        - Event Remove Task
+        - View total Task
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                tasks: [
+                    {id: this.makeUId(), title: 'Task1', active: 0},
+                    {id: this.makeUId(), title: 'Task2', active: 1},
+                ],
+            }
+        },
+        methods: {
+            makeUId(length = 10) {
+                let result = ''
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+                const charactersLength = characters.length;
+                for (let i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() *
+                        charactersLength));
+                }
+                return result
+            },
+            findIndexTaskById(id) {
+                return this.tasks.findIndex((obj => obj.id === id))
+            },
+            removeTaskByIndex(index) {
+                this.tasks.splice(index, 1)
+            },
+            activeTaskByIndex(index) {
+                this.tasks[index].active = 1
+            }
+        },
+    });
+</script>
+</body>
+</html>
