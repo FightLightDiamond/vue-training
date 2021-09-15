@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lesson1/components/active-list-component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson1/components/table-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lesson1/components/totalComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson1/components/inactive-list-component.js" beforeDir="false" afterPath="$PROJECT_DIR$/lesson1/components/inactive-list-component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lesson1/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/lesson1/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +60,7 @@
       <workItem from="1631529628394" duration="12429000" />
       <workItem from="1631625401245" duration="4759000" />
       <workItem from="1631703259582" duration="42000" />
-      <workItem from="1631703312443" duration="6123000" />
+      <workItem from="1631703312443" duration="7107000" />
     </task>
     <servers />
   </component>

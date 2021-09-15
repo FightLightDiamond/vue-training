@@ -22,13 +22,7 @@
     -->
     <active-list-component :tasks="tasks"></active-list-component>
 
-    <div>
-
-        <!--
-           You can create new component for total.
-        -->
-        Total: {{total}}
-    </div>
+    <total-component :total="total" />
 
     <div>
         <p>Write to complete todo list example</p>
@@ -45,6 +39,7 @@
     import CreateComponent from "./components/create-component.js";
     import InactiveListComponent from "./components/inactive-list-component.js";
     import ActiveListComponent from "./components/active-list-component.js";
+    import TotalComponent from "./components/totalComponent.js";
 
     const app = new Vue({
         el: "#app",
@@ -60,7 +55,12 @@
           'create-component': CreateComponent,
           'inactive-list-component': InactiveListComponent,
           'active-list-component': ActiveListComponent,
+          'total-component': TotalComponent,
         },
+        /*
+        * I can not move or move for child
+        * Computed cache, if computed use by many component. I will move for child, if one component use
+        * */
         computed: {
           total: function () {
               return this.tasks.length
