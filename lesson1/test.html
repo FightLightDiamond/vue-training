@@ -20,24 +20,12 @@
     <!--Active task component
         You can write code for active list component
     -->
+    <active-list-component :tasks="tasks"></active-list-component>
+
     <div>
-        <h2>List Active</h2>
-        <table class="table table-bordered">
-            <tr>
-                <th>Title</th>
-                <th style="width: 10%"></th>
-            </tr>
-            <tr v-for="task in tasks" v-if="task.active">
-                <td>{{task.title}}</td>
-                <td class="text-right">
-                    <button class="btn btn-sm btn-danger" @click="onRemove(task.id)">Remove</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div>
+
         <!--
-            I want show total task here. You can write code
+           You can create new component for total.
         -->
         Total: {{total}}
     </div>
@@ -56,6 +44,7 @@
 <script type="module">
     import CreateComponent from "./components/create-component.js";
     import InactiveListComponent from "./components/inactive-list-component.js";
+    import ActiveListComponent from "./components/active-list-component.js";
 
     const app = new Vue({
         el: "#app",
@@ -70,6 +59,7 @@
         components: {
           'create-component': CreateComponent,
           'inactive-list-component': InactiveListComponent,
+          'active-list-component': ActiveListComponent,
         },
         computed: {
           total: function () {
@@ -77,13 +67,13 @@
           }
         },
         methods: {
-            onActive(id) {
-                alert('call active on parent')
-              // get index by id
-                const index = this.findIndexTaskById(id)
-                this.activeTaskByIndex(index)
-              // you can write code here
-            },
+            // onActive(id) {
+            //     alert('call active on parent')
+            //   // get index by id
+            //     const index = this.findIndexTaskById(id)
+            //     this.activeTaskByIndex(index)
+            //   // you can write code here
+            // },
             // onCreate() {
             //     alert('call on Create Parent')
             //     this.tasks = [...this.tasks, {id: this.makeUId(), title: this.taskName, active: 0}]

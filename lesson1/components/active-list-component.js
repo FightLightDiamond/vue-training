@@ -1,6 +1,6 @@
 import TableComponent from "./table-component.js"
 
-const InactiveListComponent = {
+const ActiveListComponent = {
     data: function () {
         return {
 
@@ -15,32 +15,32 @@ const InactiveListComponent = {
     },
     template: `
     <div>
-        <h2>List inactive</h2>
+        <h2>List Active</h2>
         <table-component>
-            <tr v-for="task in tasks" v-if="!task.active">
+            <!--
+                Slot is place view task row
+            -->
+            <tr v-for="task in tasks" v-if="task.active">
                 <td>{{task.title}}</td>
                 <td class="text-right">
-                    <button class="btn btn-sm btn-danger" @click="onActive(task.id)">Active</button>
+                    <button class="btn btn-sm btn-danger" @click="onRemove(task.id)">Remove</button>
                 </td>
             </tr>
         </table-component>
     </div>
     `,
     methods: {
-        onActive(id) {
-            // alert('call active from child')
-            // get index by id
-            const index = this.findIndexTaskById(id)
-            this.activeTaskByIndex(index)
-            // you can write code here
+        onRemove(id) {
+            const index = this.findIndexTaskById(id);
+            this.removeTaskByIndex(index);
         },
         findIndexTaskById(id) {
             return this.tasks.findIndex((obj => obj.id === id))
         },
-        activeTaskByIndex(index) {
-            this.tasks[index].active = 1
-        }
+        removeTaskByIndex(index) {
+            this.tasks.splice(index, 1)
+        },
     }
 }
 
-export default InactiveListComponent
+export default ActiveListComponent
