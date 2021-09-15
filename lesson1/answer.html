@@ -2,24 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test1</title>
+    <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
 <div id="app" class="container">
     <h1>Todo</h1>
-    <!--Add task component
-        => @event-create-from-child => list event define on child
-    -->
-    <create-component @event-create-from-child="onCreate"></create-component>
-    <!--inactive task component
-        => props tasks
-    -->
-    <inactive-list-component :tasks="tasks"></inactive-list-component>
-    <!--Active task component
-        You can write code for active list component
-    -->
+    <div>
+        <h2>Create new Task</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" v-model="taskName" placeholder="Enter task name">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" @click="onCreate()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>List inactive</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th style="width: 10%"></th>
+            </tr>
+            <tr v-for="task in tasks" v-if="!task.active">
+                <td>{{task.title}}</td>
+                <td class="text-right">
+                    <button @click="onActive(task.id)" class="btn btn-sm btn-success">Active</button>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div>
         <h2>List Active</h2>
         <table class="table table-bordered">
@@ -30,75 +43,51 @@
             <tr v-for="task in tasks" v-if="task.active">
                 <td>{{task.title}}</td>
                 <td class="text-right">
-                    <button class="btn btn-sm btn-danger" @click="onRemove(task.id)">Remove</button>
+                    <button @click="onRemove(task.id)" class="btn btn-sm btn-danger">Remove</button>
                 </td>
             </tr>
         </table>
     </div>
     <div>
-        <!--
-            I want show total task here. You can write code
-        -->
         Total: {{total}}
-    </div>
-
-    <div>
-        <p>Write to complete todo list example</p>
-        - Get tasks data for List inactive and list active
-        - Event Create Task
-        - Event Active Task
-        - Event Remove Task
-        - View total Task
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script type="module">
-    import CreateComponent from "./components/create-component.js";
-    import InactiveListComponent from "./components/inactive-list-component.js";
-
+<script>
     const app = new Vue({
         el: "#app",
         data() {
             return {
+                taskName: '',
                 tasks: [
                     {id: this.makeUId(), title: 'Task1', active: 0},
-                    {id: this.makeUId(), title: 'Task2', active: 1},
+                    {id: this.makeUId(), title: 'Task2', active: 0},
+                    {id: this.makeUId(), title: 'Task3', active: 1}
                 ],
+                nextID: 0,
+            }
+        },
+        computed: {
+            total: function () {
+                return this.tasks.length;
             }
         },
         components: {
-          'create-component': CreateComponent,
-          'inactive-list-component': InactiveListComponent,
-        },
-        computed: {
-          total: function () {
-              return this.tasks.length
-          }
+            "title-component": TitleComponent
         },
         methods: {
-            onActive(id) {
-                alert('call active on parent')
-              // get index by id
-                const index = this.findIndexTaskById(id)
-                this.activeTaskByIndex(index)
-              // you can write code here
+            onCreate() {
+                this.tasks = [...this.tasks, {id: this.makeUId(), title: this.taskName, active: 0}]
+                this.taskName = ''
             },
-            // onCreate() {
-            //     alert('call on Create Parent')
-            //     this.tasks = [...this.tasks, {id: this.makeUId(), title: this.taskName, active: 0}]
-            //     this.taskName = ''
-            //     /*
-            //     * [...this.tasks, newTask] => [task1, task2, newTask]
-            //     *
-            //     * */
-            // },
-            onCreate(taskFromChild) {
-                this.tasks = [...this.tasks, taskFromChild]
+            onActive(id) {
+                const index = this.findIndexTaskById(id)
+                this.tasks[index].active = 1
             },
             onRemove(id) {
-                const index = this.findIndexTaskById(id);
-                this.removeTaskByIndex(index);
+                const index = this.findIndexTaskById(id)
+                this.tasks.splice(index, 1)
             },
             makeUId(length = 10) {
                 let result = ''

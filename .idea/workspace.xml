@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="" />
+    <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lesson1/common/makeUID.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lesson1/components/create-component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lesson1/components/inactive-list-component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson1/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/lesson1/test.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +20,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1y57WMGV3XYWHvMozuPTlC3Gbcn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,8 +37,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lesson2" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lesson1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lesson2" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,7 +59,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631529626167</updated>
-      <workItem from="1631529628394" duration="7141000" />
+      <workItem from="1631529628394" duration="12429000" />
+      <workItem from="1631625401245" duration="4759000" />
+      <workItem from="1631703259582" duration="42000" />
+      <workItem from="1631703312443" duration="4912000" />
     </task>
     <servers />
   </component>
@@ -45,9 +70,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="619" y="235" width="597" height="548" key="find.popup" timestamp="1631535115520">
+    <state x="274" y="167" key="SettingsEditor" timestamp="1631629344687">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="619" y="235" width="597" height="548" key="find.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631535115520" />
+    <state x="274" y="167" key="SettingsEditor/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631629344687" />
+    <state x="619" y="235" width="597" height="548" key="find.popup" timestamp="1631627764217">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="619" y="235" width="597" height="548" key="find.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631627764217" />
+    <state x="455" y="247" width="670" height="676" key="search.everywhere.popup" timestamp="1631544845976">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="455" y="247" width="670" height="676" key="search.everywhere.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631544845976" />
   </component>
 </project>
