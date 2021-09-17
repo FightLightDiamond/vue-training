@@ -1,10 +1,13 @@
 <template>
-$END$
+  <div>
+    Total: {{ total }}
+  </div>
 </template>
 
 <script>
 export default {
-name: "TotalComponent"
+  name: "TotalComponent",
+  props: ['total'],
 }
 </script>
 
