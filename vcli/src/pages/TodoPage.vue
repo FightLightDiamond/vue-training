@@ -27,14 +27,13 @@ import InactiveListComponent from "@/components/todo/InactiveListComponent";
 import ActiveListComponent from "@/components/todo/ActiveListComponent";
 import TotalComponent from "@/components/todo/TotalComponent";
 
+import axios from "axios"
+
 export default {
 name: "TodoPage",
   data() {
     return {
-      tasks: [
-        {id: this.makeUId(), title: 'Task1', active: 0},
-        {id: this.makeUId(), title: 'Task2', active: 1},
-      ],
+      tasks: []
     }
   },
   components: {
@@ -42,6 +41,18 @@ name: "TodoPage",
     'inactive-list-component': InactiveListComponent,
     'active-list-component': ActiveListComponent,
     'total-component': TotalComponent,
+  },
+  created() {
+    axios.get('http://localhost:2000/tasks/').then((res) => {
+      console.log('task res', res)
+      if(res.status === 200) {
+        this.tasks = res.data
+      } else {
+        alert('Get tasks fail')
+      }
+    }).catch((error) => {
+      alert(error.toString())
+    })
   },
   /*
   * I can not move or move for child
@@ -55,16 +66,6 @@ name: "TodoPage",
   methods: {
     onCreate(taskFromChild) {
       this.tasks = [...this.tasks, taskFromChild]
-    },
-    makeUId(length = 10) {
-      let result = ''
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-      const charactersLength = characters.length;
-      for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-      }
-      return result
     },
   },
 }

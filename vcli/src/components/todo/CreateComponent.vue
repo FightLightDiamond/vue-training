@@ -25,6 +25,7 @@ name: "CreateComponent",
       // we create new task on here
       const task = {id: makeUId(), title: this.taskName, active: 0}
       this.taskName = ''
+      // you modified code here use axios create task, can you try?
       /**
        * Create event form child to parent listen data
        * $emit is function create event of VUE Support
