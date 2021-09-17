@@ -73,9 +73,9 @@
                 return this.tasks.length;
             }
         },
-        components: {
-            "title-component": TitleComponent
-        },
+        // components: {
+        //     "title-component": TitleComponent
+        // },
         methods: {
             onCreate() {
                 this.tasks = [...this.tasks, {id: this.makeUId(), title: this.taskName, active: 0}]
