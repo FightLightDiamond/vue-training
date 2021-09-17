@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import makeUId from "../../helpers/makeUID"
+
+import axios from "axios"
 
 export default {
 name: "CreateComponent",
@@ -23,14 +24,23 @@ name: "CreateComponent",
   methods: {
     onCreate() {
       // we create new task on here
-      const task = {id: makeUId(), title: this.taskName, active: 0}
-      this.taskName = ''
-      // you modified code here use axios create task, can you try?
-      /**
-       * Create event form child to parent listen data
-       * $emit is function create event of VUE Support
-       */
-      this.$emit('event-create-from-child', task)
+      const task = {title: this.taskName, active: 0}
+
+      axios.post('http://localhost:2000/tasks/', task).then((res) => {
+        if(res.status === 201) {
+          this.taskName = ''
+          /**
+           * Create event form child to parent listen data
+           * $emit is function create event of VUE Support
+           */
+          this.$emit('event-create-from-child', task)
+          alert('create task successfully')
+        } else {
+          alert('create task fail')
+        }
+      }).catch((error) => {
+        alert(error.toString())
+      })
     }
   }
 }
