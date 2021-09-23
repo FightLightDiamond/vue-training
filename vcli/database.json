@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "email": "user@gmail.com",
+      "password": "password"
+    }
+  ],
   "tasks": [
     {
       "id": 1,
@@ -39,6 +46,11 @@
       "title": "new create task no id2",
       "active": 0,
       "id": 7
+    },
+    {
+      "title": "new task active",
+      "active": 0,
+      "id": 8
     }
   ]
 }

@@ -2,7 +2,7 @@
 <!--
 Vue cli support .vue => not use.js
 -->
-  <div id="app" class="container">
+  <div class="container">
     <h1>Todo</h1>
     <create-component @event-create-from-child="onCreate"></create-component>
     <inactive-list-component :tasks="tasks"></inactive-list-component>
@@ -43,16 +43,23 @@ name: "TodoPage",
     'total-component': TotalComponent,
   },
   created() {
-    axios.get('http://localhost:2000/tasks/').then((res) => {
-      console.log('task res', res)
-      if(res.status === 200) {
-        this.tasks = res.data
-      } else {
-        alert('Get tasks fail')
-      }
-    }).catch((error) => {
-      alert(error.toString())
-    })
+    if(localStorage.getItem('user')) {
+      axios.get('http://localhost:2000/tasks/').then((res) => {
+        console.log('task res', res)
+        if(res.status === 200) {
+          this.tasks = res.data
+        } else {
+          alert('Get tasks fail')
+        }
+      }).catch((error) => {
+        alert(error.toString())
+      })
+    } else {
+      /*
+      * Only login access page
+      * */
+      this.$router.push({name: "login"})
+    }
   },
   /*
   * I can not move or move for child
@@ -67,6 +74,24 @@ name: "TodoPage",
     onCreate(taskFromChild) {
       this.tasks = [...this.tasks, taskFromChild]
     },
+  },
+  beforeMount() {
+    console.log("beforeMount")
+  },
+  mounted() {
+    console.log("mounted")
+  },
+  beforeUpdate() {
+    console.log("beforeUpdate")
+  },
+  updated() {
+    console.log("updated")
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy")
+  },
+  destroyed() {
+    console.log("destroyed")
   },
 }
 </script>

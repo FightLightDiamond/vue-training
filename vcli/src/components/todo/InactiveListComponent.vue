@@ -14,6 +14,7 @@
 
 <script>
 import TableComponent from "./TableComponent"
+import axios from "axios"
 
 export default {
   name: "InactiveListComponent",
@@ -23,10 +24,34 @@ export default {
   },
   methods: {
     onActive(id) {
-      // alert('call active from child')
-      // get index by id
-      const index = this.findIndexTaskById(id)
-      this.activeTaskByIndex(index)
+      /*
+     * I will use axios remove task
+     * Call to api remove task
+     * */
+
+      // //update task in vue before call api, logic wrong
+      // const index = this.findIndexTaskById(id)
+      // this.activeTaskByIndex(index)
+
+      axios.patch(`http://localhost:2000/tasks/${id}` ).then((res) => {
+        console.log('delete', res)
+        // check response api success. Had update task
+        if(res.status === 200) {
+
+        // Must change state data task when after call api success
+          const index = this.findIndexTaskById(id)
+          this.activeTaskByIndex(index)
+
+          alert('Delete task successfully')
+        } else {
+          // No remove task on api
+          alert('Delete task fail')
+        }
+      }).catch((error) => {
+        //error
+        alert(error.toString())
+      })
+
       // you can write code here
     },
     findIndexTaskById(id) {

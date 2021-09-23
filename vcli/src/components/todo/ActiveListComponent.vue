@@ -17,17 +17,38 @@
 
 <script>
 import TableComponent from "./TableComponent"
+import axios from "axios";
 
 export default {
   name: "ActiveListComponent",
+  //tasks here
   props: ['tasks'],
   components: {
     'table-component': TableComponent
   },
   methods: {
     onRemove(id) {
-      const index = this.findIndexTaskById(id);
-      this.removeTaskByIndex(index);
+      /*
+      * I will use axios remove task
+      * Call to api remove task
+      * */
+      axios.delete(`http://localhost:2000/tasks/${id}` ).then((res) => {
+        console.log('delete', res)
+        // check response api success. Had remove task
+        if(res.status === 200) {
+
+          // remove task on data
+          const index = this.findIndexTaskById(id);
+          this.removeTaskByIndex(index);
+          alert('Delete task successfully')
+        } else {
+          // No remove task on api
+          alert('Delete task fail')
+        }
+      }).catch((error) => {
+        //error
+        alert(error.toString())
+      })
     },
     findIndexTaskById(id) {
       return this.tasks.findIndex((obj => obj.id === id))
