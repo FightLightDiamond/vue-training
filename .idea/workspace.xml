@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vcli/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/database.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/Registration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/Registration.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +41,19 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lesson2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lesson1" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lesson2" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lesson1" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -76,14 +76,22 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="528" y="110" key="CommitChangelistDialog2" timestamp="1632738316203">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="528" y="110" key="CommitChangelistDialog2/0.25.1680.1025@0.25.1680.1025" timestamp="1632738316203" />
+    <state x="741" y="244" key="RollbackChangesDialog" timestamp="1632738307463">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="741" y="244" key="RollbackChangesDialog/0.25.1680.1025@0.25.1680.1025" timestamp="1632738307463" />
     <state x="274" y="167" key="SettingsEditor" timestamp="1631629344687">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="274" y="167" key="SettingsEditor/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631629344687" />
-    <state x="619" y="235" width="597" height="548" key="find.popup" timestamp="1631627764217">
+    <state x="619" y="235" width="597" height="548" key="find.popup" timestamp="1632743310096">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="619" y="235" width="597" height="548" key="find.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631627764217" />
+    <state x="619" y="235" width="597" height="548" key="find.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1632743310096" />
     <state x="455" y="247" width="670" height="676" key="search.everywhere.popup" timestamp="1631544845976">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
