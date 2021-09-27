@@ -10,7 +10,9 @@
       <label >Password</label>
       <input type="password" v-model="password" class="form-control" >
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button> <br><br>
+    <button type="submit" class="btn btn-danger" @click="goToReg()">Not Registered yet? Click here for Registration</button>
+
   </form>
 </div>
 </template>
@@ -27,6 +29,9 @@ export default {
     }
   },
   methods: {
+    goToReg() {
+      this.$router.push("/Registration");
+    },
     onLogin: async function () {
       try {
         const res = await axios.get(`http://localhost:2000/users?email=${this.email}&password=${this.password}`)
