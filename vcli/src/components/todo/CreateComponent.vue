@@ -34,6 +34,9 @@ name: "CreateComponent",
     }
   },
   methods: {
+  /*
+  * Use mutations on vuex
+  * */
     onCreate() {
 
            this.$refs.createTask.validate().then(success => {
@@ -50,7 +53,11 @@ name: "CreateComponent",
            * Create event form child to parent listen data
            * $emit is function create event of VUE Support
            */
-          this.$emit('event-create-from-child', task)
+          console.log('newTask before call API', task)
+          console.log('newTask after call API', res.data)
+
+          // this.$emit('event-create-from-child', task)
+          this.$emit('event-create-from-child', res.data)
           alert('create task successfully')
         } else {
           alert('create task fail')

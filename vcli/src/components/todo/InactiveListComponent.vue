@@ -24,6 +24,8 @@ export default {
   },
   methods: {
     onActive(id) {
+
+      alert(id)
       /*
      * I will use axios remove task
      * Call to api remove task
@@ -42,10 +44,10 @@ export default {
           const index = this.findIndexTaskById(id)
           this.activeTaskByIndex(index)
 
-          alert('Delete task successfully')
+          alert('Active task successfully')
         } else {
           // No remove task on api
-          alert('Delete task fail')
+          alert('Active task fail')
         }
       }).catch((error) => {
         //error

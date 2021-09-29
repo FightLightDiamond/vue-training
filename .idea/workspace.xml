@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/vcli/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/database.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/CreateComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/CreateComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/pages/Registration.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/Registration.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -69,6 +73,7 @@
       <workItem from="1631703259582" duration="42000" />
       <workItem from="1631703312443" duration="7107000" />
       <workItem from="1632395267190" duration="6030000" />
+      <workItem from="1632916833582" duration="3563000" />
     </task>
     <servers />
   </component>

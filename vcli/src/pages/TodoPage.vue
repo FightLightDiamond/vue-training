@@ -28,11 +28,14 @@ import ActiveListComponent from "@/components/todo/ActiveListComponent";
 import TotalComponent from "@/components/todo/TotalComponent";
 
 import axios from "axios"
-
+import {mapState} from "vuex"
 export default {
 name: "TodoPage",
   data() {
     return {
+      /*
+      * Use state on vuex
+      * */
       tasks: []
     }
   },
@@ -43,7 +46,7 @@ name: "TodoPage",
     'total-component': TotalComponent,
   },
   created() {
-    if(localStorage.getItem('user')) {
+    if(this.isAuthenticated) {
       axios.get('http://localhost:2000/tasks/').then((res) => {
         console.log('task res', res)
         if(res.status === 200) {
@@ -66,6 +69,7 @@ name: "TodoPage",
   * Computed cache, if computed use by many component. I will move for child, if one component use
   * */
   computed: {
+    ...mapState(['isAuthenticated']),
     total: function () {
       return this.tasks.length
     }
@@ -74,24 +78,6 @@ name: "TodoPage",
     onCreate(taskFromChild) {
       this.tasks = [...this.tasks, taskFromChild]
     },
-  },
-  beforeMount() {
-    console.log("beforeMount")
-  },
-  mounted() {
-    console.log("mounted")
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate")
-  },
-  updated() {
-    console.log("updated")
-  },
-  beforeDestroy() {
-    console.log("beforeDestroy")
-  },
-  destroyed() {
-    console.log("destroyed")
   },
 }
 </script>

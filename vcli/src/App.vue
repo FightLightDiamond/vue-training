@@ -11,25 +11,24 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/task">Task</router-link>
+            <router-link v-if="isAuthenticated===true" class="nav-link" to="/task">Task</router-link>
 <!--            <a class="nav-link" href="/task">Task</a>-->
           </li>
                     <li class="nav-item">
-            <router-link class="nav-link" to="/Registration">Registration</router-link>
+            <router-link v-if="isAuthenticated===true" class="nav-link" to="/ChangePwd">ChangePwd</router-link>
 <!--            <a class="nav-link" href="/task">Task</a>-->
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/login">Login</router-link>
+            <router-link v-if="isAuthenticated===false" class="nav-link" to="/login">Login</router-link>
 <!--            <a class="nav-link" href="/login">Login</a>-->
           </li>
           <li class="nav-item">
 <!--            <router-link class="nav-link" to="/login">Login</router-link>-->
-            <a class="nav-link" @click="onLogout">Logout</a>
+            <a class="nav-link" v-if="isAuthenticated===true" @click="onLogout">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
-
 
     <div class="container">
       <!--
@@ -44,18 +43,23 @@
 
 <script>
 // import TodoPage from "@/pages/TodoPage";
+import {mapState, mapMutations} from "vuex";
+
 export default {
   name: 'App',
   // components: {
   //   TodoPage
   // }
+  computed: {
+    ...mapState(['isAuthenticated']),
+  },
   methods: {
+    ...mapMutations(['LOGOUT']),
     onLogout: function () {
       /*
       * Remove user on local storage
       * */
-      localStorage.removeItem('user')
-      this.$router.push({name: 'login'})
+      this.LOGOUT()
     }
   }
 }

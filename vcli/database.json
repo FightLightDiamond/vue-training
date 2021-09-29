@@ -2,12 +2,12 @@
   "users": [
     {
       "id": 1,
-      "email": "user@gmail.com",
+      "email": "user123@gmail.com",
       "password": "password"
     },
     {
       "email": "user@gmail.com",
-      "password": "password",
+      "password": "password12",
       "id": 2
     },
     {
@@ -96,6 +96,21 @@
       "title": "new task active",
       "active": 0,
       "id": 8
+    },
+    {
+      "title": "Create new Task",
+      "active": 0,
+      "id": 9
+    },
+    {
+      "title": "New task for ok",
+      "active": 0,
+      "id": 10
+    },
+    {
+      "title": "new task error",
+      "active": 0,
+      "id": 11
     }
   ]
 }

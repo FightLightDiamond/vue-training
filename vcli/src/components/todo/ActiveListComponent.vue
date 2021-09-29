@@ -31,7 +31,10 @@ export default {
       /*
       * I will use axios remove task
       * Call to api remove task
+      *
+      * Use mutations on vuex
       * */
+
       axios.delete(`http://localhost:2000/tasks/${id}` ).then((res) => {
         console.log('delete', res)
         // check response api success. Had remove task

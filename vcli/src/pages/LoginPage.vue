@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import axios from "axios"
+// import axios from "axios"
+import {mapState, mapMutations} from "vuex";
 
 export default {
   name: "LoginPage",
@@ -46,9 +47,11 @@ export default {
       password: ''
     }
   },
+  computed: {
+    ...mapState(['isAuthenticated']),
+  },
   methods: {
-
-
+    ...mapMutations(['LOGIN']),
     goToReg() {
       this.$router.push("/Registration");
     },
@@ -60,37 +63,7 @@ export default {
         if (!success) {
           return;
         }
-        try {
-          const res = await axios.get(`http://localhost:2000/users?email=${this.email}&password=${this.password}`)
-          console.log('login', res)
-          /*
-        * Count length array. No found account return array eq []
-        *
-        * */
-          if (res.status === 200 && res.data.length > 0) {
-            alert('login successfully')
-            /*
-          * Save user login in local storage
-          * LocalStorage in browser. save data for client
-          * */
-            localStorage.setItem('user', JSON.stringify(res.data.pop()))
-            //*
-            // Redirect to task
-            // */
-            // this.$router.push('/task')
-            this.$router.push({name: 'task'})
-
-          } else {
-            /*
-            * Login fail
-            * Set error message
-            * */
-            this.$refs.formLogin.setErrors({email: 'User or password incorrect'});
-            // alert('User or password incorrect')
-          }
-        } catch (e) {
-          alert('Login fail' + e.toString())
-        }
+        this.LOGIN({email: this.email, password: this.password})
       })
     }
   },
@@ -101,29 +74,10 @@ export default {
     /*
     * Had login
     * */
-    if (localStorage.getItem('user')) {
-
+    if (this.isAuthenticated) {
       this.$router.push({name: 'task'})
     }
     console.log("mounted")
-  },
-  beforeMount() {
-    console.log("beforeMount")
-  },
-  mounted() {
-    console.log("mounted")
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate")
-  },
-  updated() {
-    console.log("updated")
-  },
-  beforeDestroy() {
-    console.log("beforeDestroy")
-  },
-  destroyed() {
-    console.log("destroyed")
   },
 }
 </script>

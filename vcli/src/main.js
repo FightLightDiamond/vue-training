@@ -11,7 +11,7 @@ import router from './router'
  * If you import to global. You don't need import to component
  *
  */
-// import { ValidationProvider } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
 // Vue.component('ValidationProvider', ValidationProvider);
 
 Vue.config.productionTip = false
@@ -74,27 +74,45 @@ Vue.config.productionTip = false
 //   message: 'This {_field_} field is required'
 // });
 
-// import * as rules from 'vee-validate/dist/rules';
-// import { messages } from 'vee-validate/dist/locale/en.json';
+import * as rules from 'vee-validate/dist/rules';
+import { messages } from 'vee-validate/dist/locale/en.json';
 //
-// Object.keys(rules).forEach(rule => {
-//   extend(rule, {
-//     ...rules[rule], // copies rule configuration
-//     message: messages[rule] // assign message
-//   });
-// });
+Object.keys(rules).forEach(rule => {
+  extend(rule, {
+    ...rules[rule], // copies rule configuration
+    message: messages[rule] // assign message
+  });
+});
 
 /**
  * Import full
  */
-import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
-import { ValidationObserver } from 'vee-validate';
+// import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
+import {extend, ValidationObserver} from 'vee-validate';
 // import {ValidationObserver} from "vue-validate"
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
+//*
+// Create new rules validate
+// */
+extend('notsame', {
+  params: ['target'],
+  validate(value, { target }) {
+    console.log('validate value', value)
+    console.log('validate target', target)
+    return value !== target;
+  },
+  message: "New password not same old password"
+});
+
+/**
+ * Vuex
+ */
+import store from "@/store";
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
