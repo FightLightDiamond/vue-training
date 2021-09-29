@@ -3,6 +3,8 @@ import Router from "vue-router"
 import TodoPage from "@/pages/TodoPage";
 import LoginPage from "@/pages/LoginPage";
 import Registration from "@/pages/Registration";
+import ChangePwd from "@/pages/ChangePwd";
+
 
 
 Vue.use(Router)
@@ -23,6 +25,11 @@ export default new Router({
             path: '/Registration',
             name: 'Registration',
             component: Registration
+        },
+        {
+            path: '/ChangePwd',
+            name: 'ChangePwd',
+            component: ChangePwd
         },
 
     ],

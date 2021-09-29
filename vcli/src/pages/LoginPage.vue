@@ -18,7 +18,13 @@
             <span class="error">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
+         
         <button type="submit" class="btn btn-primary">Submit</button>
+         
+        <button class="btn btn-light" type="button" @click="goToChangePwd()" >Change Password</button>
+
+  
+   
         <br><br>
         <button type="submit" class="btn btn-danger" @click="goToReg()">Not Registered yet? Click here for
           Registration
@@ -41,8 +47,13 @@ export default {
     }
   },
   methods: {
+
+
     goToReg() {
       this.$router.push("/Registration");
+    },
+    goToChangePwd() {
+      this.$router.push("/ChangePwd");
     },
     onLogin: async function () {
       this.$refs.formLogin.validate().then(async (success) => {
