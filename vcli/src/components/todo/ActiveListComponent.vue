@@ -5,7 +5,7 @@
       <tr v-for="task in activeTasks" v-bind:key="task.id">
         <td>{{ task.title }}</td>
         <td class="text-right">
-          <button class="btn btn-sm btn-danger" @click="REMOVE_TASK(task.id)">Remove</button>
+          <button class="btn btn-sm btn-danger" @click="deleteTask(task.id)">Remove</button>
         </td>
       </tr>
     </table-component>
@@ -17,7 +17,7 @@
 
 <script>
 import TableComponent from "./TableComponent"
-import {mapGetters, mapMutations} from "vuex"
+import {mapGetters, mapActions} from "vuex"
 
 export default {
   name: "ActiveListComponent",
@@ -30,7 +30,7 @@ export default {
     ...mapGetters(['activeTasks'])
   },
   methods: {
-    ...mapMutations(['REMOVE_TASK']),
+    ...mapActions(['deleteTask']),
     // onRemove(id) {
     //   /*
     //   * I will use axios remove task

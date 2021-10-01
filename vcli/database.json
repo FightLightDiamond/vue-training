@@ -11,36 +11,5 @@
       "id": 2
     }
   ],
-  "tasks": [
-    {
-      "id": 4,
-      "title": "task1 new ",
-      "active": 1
-    },
-    {
-      "title": "new task JP",
-      "active": 1,
-      "id": 5
-    },
-    {
-      "id": "fQt1ADUsdZ",
-      "title": "new task VUE CLI",
-      "active": 1
-    },
-    {
-      "id": "clR3ZHj3St",
-      "title": "new task vuejs v2",
-      "active": 1
-    },
-    {
-      "title": "create task no id",
-      "active": 1,
-      "id": 6
-    },
-    {
-      "title": "fsfsffsfsf",
-      "active": 1,
-      "id": 7
-    }
-  ]
+  "tasks": []
 }

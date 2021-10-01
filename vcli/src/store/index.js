@@ -10,23 +10,35 @@ import notify from "vue-notification"
 
 Vue.use(Vuex)
 Vue.use(notify)
-
+/**
+ * Component use mapStates, mapGetters to get data to display data
+ * Event on component:
+ *  - Change database: use mapActions => working api success commit('MUTATION') to update data state vuex
+ *  - Only change state vuex: use mapMutations
+ *
+ * @type {{mutations: {LOGOUT(*): void, ACTIVE_TASK(*, *): void, CREATE_TASK(*, *): void, GET_TASKS(*, *): void, REMOVE_TASK(*, *): Promise<void>, LOGIN(*, {email: *, password: *}): Promise<void>}, state: {isAuthenticated: boolean, user: any, tasks: []}, getters: {inactiveTasks: (function(*): *), activeTasks: (function(*): *), totalTask: (function(*): *)}, actions: {updateTask({commit: *}, *=): Promise<void>, getTasks({commit: *}): Promise<void>, createTask({commit: *}, *=): Promise<void>, deleteTask({commit: *}, *=): Promise<void>}}}
+ */
 const storeData = {
+    /**
+     * Data using in all component (dont need share data by other component)
+     */
     state: {
         tasks: [],
         user: JSON.parse(localStorage.getItem('user')),
         isAuthenticated: !!localStorage.getItem('user')
     },
+    /**
+     * Data by state
+     */
     getters: {
         totalTask: state => state.tasks.length,
         activeTasks: state => state.tasks.filter(task => task.active),
         inactiveTasks: state => state.tasks.filter(task => !task.active)
     },
+    /**
+     * Handle event on component, working with api, data on database, not update state in vuex
+     */
     actions: {
-        /*
-        *
-        * Logic with API
-        * */
         async getTasks({commit}) {
             /*
             * I do not want write: context  => context.commit('GET_TASKS', res.data)
@@ -56,7 +68,6 @@ const storeData = {
                 alert(e.toString())
             }
         },
-
         async updateTask({commit}, id) {
             try {
                 const res = await TaskService.update(id, {active: 1})
@@ -82,29 +93,15 @@ const storeData = {
                 })
             }
         },
-    },
-    mutations: {
-        /*
-        * Logic with state
-        * */
-        GET_TASKS(state, task) {
-            state.tasks = task
-        },
-        CREATE_TASK(state, task) {
-            state.tasks = [...state.tasks, task]
-        },
-        ACTIVE_TASK(state, id) {
-            const index = state.tasks.findIndex((obj => obj.id === id))
-            state.tasks[index].active = 1
-
-        },
-        async REMOVE_TASK(state, id) {
+        async deleteTask({commit}, id) {
             try {
-                const res = TaskService.delete(id)
+                /**
+                 * Call api to remove task in date base
+                 */
+                const res = await TaskService.delete(id)
                 if (res.status === 200) {
-                    // remove task on data
-                    const index = state.tasks.findIndex((obj => obj.id === id))
-                    state.tasks.splice(index, 1)
+                    // when remove task on database success, update tasks state on vue
+                    commit('REMOVE_TASK', id)
                     Vue.notify({
                         type: 'success',
                         title: 'Task message',
@@ -124,6 +121,25 @@ const storeData = {
                     text: e.toString()
                 })
             }
+        }
+    },
+    /**
+     * Handle only logic change state vuex
+     */
+    mutations: {
+        GET_TASKS(state, task) {
+            state.tasks = task
+        },
+        CREATE_TASK(state, task) {
+            state.tasks = [...state.tasks, task]
+        },
+        ACTIVE_TASK(state, id) {
+            const index = state.tasks.findIndex((obj => obj.id === id))
+            state.tasks[index].active = 1
+        },
+        async REMOVE_TASK(state, id) {
+            const index = state.tasks.findIndex((obj => obj.id === id))
+            state.tasks.splice(index, 1)
         },
         async LOGIN(state, {email, password}) {
             try {
