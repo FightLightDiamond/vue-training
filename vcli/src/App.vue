@@ -22,6 +22,13 @@
             <router-link v-if="isAuthenticated===false" class="nav-link" to="/login">Login</router-link>
 <!--            <a class="nav-link" href="/login">Login</a>-->
           </li>
+          
+
+                    <li class="nav-item">
+            <router-link v-if="isAuthenticated===false" class="nav-link" to="/Registration">Registration</router-link>
+<!--            <a class="nav-link" href="/task">Task</a>-->
+          </li>
+
           <li class="nav-item">
 <!--            <router-link class="nav-link" to="/login">Login</router-link>-->
             <a class="nav-link" v-if="isAuthenticated===true" @click="onLogout">Logout</a>
