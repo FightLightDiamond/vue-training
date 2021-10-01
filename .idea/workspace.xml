@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vcli/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcli/src/services/task.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/database.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/CreateComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/CreateComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/TotalComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/TotalComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/TodoPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

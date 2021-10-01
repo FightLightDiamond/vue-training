@@ -1,13 +1,17 @@
 <template>
   <div>
-    Total: {{ total }}
+    Total: {{ totalTask }}
   </div>
 </template>
 
 <script>
+import {mapGetters} from "vuex"
+
 export default {
   name: "TotalComponent",
-  props: ['total'],
+  computed: {
+    ...mapGetters(['totalTask'])
+  }
 }
 </script>
 

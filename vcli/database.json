@@ -9,108 +9,38 @@
       "email": "user@gmail.com",
       "password": "password12",
       "id": 2
-    },
-    {
-      "email": "",
-      "password": "",
-      "id": 3
-    },
-    {
-      "email": "use1r@gmail.com",
-      "password": "password",
-      "id": 4
-    },
-    {
-      "email": "use3r@gmail.com",
-      "password": "password",
-      "id": 5
-    },
-    {
-      "email": "user3@gmail.com",
-      "password": "password",
-      "id": 6
-    },
-    {
-      "email": "user6@gmail.com",
-      "password": "password",
-      "id": 7
-    },
-    {
-      "email": "user6@gmail.com",
-      "password": "password",
-      "id": 8
-    },
-    {
-      "email": "2222",
-      "password": "22222222",
-      "id": 9
-    },
-    {
-      "email": "2222",
-      "password": "232323232",
-      "id": 10
     }
   ],
   "tasks": [
     {
-      "id": 1,
-      "title": "task1",
+      "id": 4,
+      "title": "task1 new ",
       "active": 1
     },
     {
-      "title": "new task",
-      "active": "1",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "title": "task1 new ",
-      "active": 0
-    },
-    {
       "title": "new task JP",
-      "active": 0,
+      "active": 1,
       "id": 5
     },
     {
       "id": "fQt1ADUsdZ",
       "title": "new task VUE CLI",
-      "active": 0
+      "active": 1
     },
     {
       "id": "clR3ZHj3St",
       "title": "new task vuejs v2",
-      "active": 0
+      "active": 1
     },
     {
       "title": "create task no id",
-      "active": 0,
+      "active": 1,
       "id": 6
     },
     {
-      "title": "new create task no id2",
-      "active": 0,
+      "title": "fsfsffsfsf",
+      "active": 1,
       "id": 7
-    },
-    {
-      "title": "new task active",
-      "active": 0,
-      "id": 8
-    },
-    {
-      "title": "Create new Task",
-      "active": 0,
-      "id": 9
-    },
-    {
-      "title": "New task for ok",
-      "active": 0,
-      "id": 10
-    },
-    {
-      "title": "new task error",
-      "active": 0,
-      "id": 11
     }
   ]
 }

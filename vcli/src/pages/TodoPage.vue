@@ -4,12 +4,11 @@ Vue cli support .vue => not use.js
 -->
   <div class="container">
     <h1>Todo</h1>
-    <create-component @event-create-from-child="onCreate"></create-component>
-    <inactive-list-component :tasks="tasks"></inactive-list-component>
-
-    <active-list-component :tasks="tasks"></active-list-component>
-    <total-component :total="total" />
-
+<!--    <create-component @event-create-from-child="onCreate"></create-component>-->
+    <create-component></create-component>
+    <inactive-list-component></inactive-list-component>
+    <active-list-component></active-list-component>
+    <total-component/>
     <div>
       <p>Write to complete todo list example</p>
       - Get tasks data for List inactive and list active
@@ -27,18 +26,11 @@ import InactiveListComponent from "@/components/todo/InactiveListComponent";
 import ActiveListComponent from "@/components/todo/ActiveListComponent";
 import TotalComponent from "@/components/todo/TotalComponent";
 
-import axios from "axios"
-import {mapState} from "vuex"
+import {mapState, mapActions} from "vuex"
+
+
 export default {
 name: "TodoPage",
-  data() {
-    return {
-      /*
-      * Use state on vuex
-      * */
-      tasks: []
-    }
-  },
   components: {
     'create-component': CreateComponent,
     'inactive-list-component': InactiveListComponent,
@@ -47,16 +39,7 @@ name: "TodoPage",
   },
   created() {
     if(this.isAuthenticated) {
-      axios.get('http://localhost:2000/tasks/').then((res) => {
-        console.log('task res', res)
-        if(res.status === 200) {
-          this.tasks = res.data
-        } else {
-          alert('Get tasks fail')
-        }
-      }).catch((error) => {
-        alert(error.toString())
-      })
+      this.getTasks()
     } else {
       /*
       * Only login access page
@@ -69,15 +52,13 @@ name: "TodoPage",
   * Computed cache, if computed use by many component. I will move for child, if one component use
   * */
   computed: {
-    ...mapState(['isAuthenticated']),
-    total: function () {
-      return this.tasks.length
-    }
+    ...mapState(['isAuthenticated', 'tasks']),
   },
   methods: {
-    onCreate(taskFromChild) {
-      this.tasks = [...this.tasks, taskFromChild]
-    },
+    ...mapActions(['getTasks']),
+    // onCreate(taskFromChild) {
+    //   this.tasks = [...this.tasks, taskFromChild]
+    // },
   },
 }
 </script>

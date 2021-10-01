@@ -43,8 +43,7 @@
       -->
       <router-view />
     </div>
-<!--    <TodoPage></TodoPage>-->
-
+    <notifications position="top center" />
   </div>
 </template>
 
