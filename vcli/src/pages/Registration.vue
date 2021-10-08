@@ -47,7 +47,7 @@
 
 <script>
 import axios from "axios"
-
+import {mapState} from "vuex"
 export default {
   name: "Registration",
   data() {
@@ -57,6 +57,9 @@ export default {
       password: '',
       value: ''
     }
+  },
+  computed: {
+    ...mapState(['user'])
   },
   methods: {
     goToStep (step) {
@@ -108,8 +111,7 @@ export default {
     /*
     * Had login
     * */
-    if (localStorage.getItem('user')) {
-
+    if (this.user.isAuthenticated) {
       this.$router.push({name: 'task'})
     }
     console.log("mounted")

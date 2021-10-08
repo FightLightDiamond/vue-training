@@ -11,5 +11,16 @@
       "id": 2
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "title": "new Task vuex",
+      "active": 0,
+      "id": 2
+    },
+    {
+      "title": "new task by module",
+      "active": 1,
+      "id": 3
+    }
+  ]
 }

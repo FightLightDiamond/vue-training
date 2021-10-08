@@ -37,7 +37,7 @@
 
 <script>
 // import axios from "axios"
-import {mapState, mapMutations} from "vuex";
+import {mapState, mapActions} from "vuex";
 
 export default {
   name: "LoginPage",
@@ -48,10 +48,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isAuthenticated']),
+    ...mapState(['user']),
   },
   methods: {
-    ...mapMutations(['LOGIN']),
+    ...mapActions(['login']),
     goToReg() {
       this.$router.push("/Registration");
     },
@@ -63,7 +63,7 @@ export default {
         if (!success) {
           return;
         }
-        this.LOGIN({email: this.email, password: this.password})
+        this.login({email: this.email, password: this.password})
       })
     }
   },
@@ -74,7 +74,7 @@ export default {
     /*
     * Had login
     * */
-    if (this.isAuthenticated) {
+    if (this.user.isAuthenticated) {
       this.$router.push({name: 'task'})
     }
     console.log("mounted")

@@ -38,7 +38,7 @@ name: "TodoPage",
     'total-component': TotalComponent,
   },
   created() {
-    if(this.isAuthenticated) {
+    if(this.user.isAuthenticated) {
       this.getTasks()
     } else {
       /*
@@ -52,7 +52,7 @@ name: "TodoPage",
   * Computed cache, if computed use by many component. I will move for child, if one component use
   * */
   computed: {
-    ...mapState(['isAuthenticated', 'tasks']),
+    ...mapState(['user', 'tasks']),
   },
   methods: {
     ...mapActions(['getTasks']),

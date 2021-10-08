@@ -46,13 +46,7 @@
 
 <script>
 import axios from "axios";
-
-// extend('notSameOldPassword', value => {
-//    if(value !== this) {
-//
-//    }
-//    return "New password not same old password"
-// });
+import {mapState} from "vuex"
 
 export default {
   name: "ChangePwd",
@@ -66,6 +60,9 @@ export default {
       new_password: '',
       confirm_password: ''
     }
+  },
+  computed: {
+    ...mapState(['user'])
   },
   methods: {
     goToLogin() {
@@ -136,7 +133,7 @@ export default {
     console.log("beforeMount")
   },
   created() {
-    if(!localStorage.getItem('user')) {
+    if(!this.user.isAuthenticated) {
       /*
       * Only login access page
       * */
