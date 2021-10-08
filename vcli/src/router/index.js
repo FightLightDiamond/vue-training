@@ -4,6 +4,7 @@ import TodoPage from "@/pages/TodoPage";
 import LoginPage from "@/pages/LoginPage";
 import Registration from "@/pages/Registration";
 import ChangePwd from "@/pages/ChangePwd";
+import EditTaskPage from "@/pages/EditTaskPage";
 
 
 
@@ -20,6 +21,11 @@ export default new Router({
             path: '/task',
             name: 'task',
             component: TodoPage
+        },
+        {
+            path: '/tasks/:id',
+            name: 'task.edit',
+            component: EditTaskPage
         },
         {
             path: '/Registration',

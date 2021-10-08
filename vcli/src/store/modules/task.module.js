@@ -1,18 +1,26 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import TaskService from "@/services/task.service";
-// import router from '../../router'
+import router from '../../router'
 import notify from "vue-notification"
 Vue.use(Vuex)
 Vue.use(notify)
 
 const TaskModule = {
     state: () => ({
+        taskEdit: {
+            id: "",
+            title: "",
+            active: 0
+        },
         tasks: []
     }),
     mutations: {
         GET_TASKS(state, task) {
             state.tasks = task
+        },
+        GET_TASK(state, task) {
+            state.taskEdit = task
         },
         CREATE_TASK(state, task) {
             state.tasks = [...state.tasks, task]
@@ -20,6 +28,12 @@ const TaskModule = {
         ACTIVE_TASK(state, id) {
             const index = state.tasks.findIndex((obj => obj.id === id))
             state.tasks[index].active = 1
+        },
+        EDIT_TASK(state, {id, title}) {
+            alert(id + title)
+            const index = state.tasks.findIndex((obj => obj.id === id))
+            console.log('state.tasks[index]', state.tasks[index])
+            // state.tasks[index].title = title
         },
         async REMOVE_TASK(state, id) {
             const index = state.tasks.findIndex((obj => obj.id === id))
@@ -38,6 +52,22 @@ const TaskModule = {
                     commit('GET_TASKS', res.data)
                 } else {
                     alert('Get tasks fail')
+                }
+            } catch (e) {
+                alert(e.toString())
+            }
+        },
+        async getTask({commit}, id) {
+            /*
+            * I do not want write: context  => context.commit('GET_TASKS', res.data)
+            * I use: {commit} => commit('GET_TASKS', res.data) => shorter
+            * */
+            try {
+                const res = await TaskService.index({id})
+                if (res.status === 200) {
+                    commit('GET_TASK', res.data.pop())
+                } else {
+                    alert('Get task fail')
                 }
             } catch (e) {
                 alert(e.toString())
@@ -66,11 +96,40 @@ const TaskModule = {
                         title: 'Task message',
                         text: 'Active task successfully!',
                     })
+
+                    router.push({name: 'task'})
                 } else {
                     Vue.notify({
                         type: 'error',
                         title: 'Task message',
                         text: 'Active task fail!'
+                    })
+                }
+            } catch (e) {
+                Vue.notify({
+                    type: 'error',
+                    title: 'Task message',
+                    text: e.toString()
+                })
+            }
+        },
+        async editTask({commit}, {id, title}) {
+
+            try {
+                const res = await TaskService.update(id, {title})
+                if (res.status === 200) {
+                    commit('EDIT_TASK', {id, title})
+
+                    Vue.notify({
+                        type: 'success',
+                        title: 'Task message',
+                        text: 'Edit task successfully!',
+                    })
+                } else {
+                    Vue.notify({
+                        type: 'error',
+                        title: 'Task message',
+                        text: 'Edit task fail!'
                     })
                 }
             } catch (e) {
@@ -112,6 +171,7 @@ const TaskModule = {
         },
     },
     getters: {
+        // taskNameEdit: state => state.taskEdit.name,
         totalTask: state => state.tasks.length,
         activeTasks: state => state.tasks.filter(task => task.active),
         inactiveTasks: state => state.tasks.filter(task => !task.active)
