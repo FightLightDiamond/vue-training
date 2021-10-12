@@ -2,18 +2,20 @@
   "users": [
     {
       "id": 1,
-      "email": "user123@gmail.com",
-      "password": "password"
+      "email": "user@gmail.com",
+      "password": "password",
+      "role": "staff"
     },
     {
-      "email": "user@gmail.com",
-      "password": "password12",
-      "id": 2
+      "email": "admin@gmail.com",
+      "password": "password",
+      "id": 2,
+      "role": "admin"
     }
   ],
   "tasks": [
     {
-      "title": "new Task vuex edit edit 123",
+      "title": "edit after refresh browser",
       "active": 0,
       "id": 2
     },

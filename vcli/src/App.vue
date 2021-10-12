@@ -22,8 +22,6 @@
             <router-link v-if="user.isAuthenticated===false" class="nav-link" to="/login">Login</router-link>
 <!--            <a class="nav-link" href="/login">Login</a>-->
           </li>
-          
-
                     <li class="nav-item">
             <router-link v-if="user.isAuthenticated===false" class="nav-link" to="/Registration">Registration</router-link>
 <!--            <a class="nav-link" href="/task">Task</a>-->
@@ -49,7 +47,10 @@
 
 <script>
 // import TodoPage from "@/pages/TodoPage";
-import {mapState, mapMutations} from "vuex";
+import {mapState, mapGetters, mapMutations} from "vuex";
+import {abilityRoles} from "./casl/index"
+import router from "@/router";
+
 
 export default {
   name: 'App',
@@ -57,6 +58,7 @@ export default {
   //   TodoPage
   // }
   computed: {
+    ...mapGetters(['role']),
     ...mapState(['user']),
   },
   methods: {
@@ -66,7 +68,18 @@ export default {
       * Remove user on local storage
       * */
       this.LOGOUT()
+      this.$ability.update([])
     }
+  },
+  created() {
+    console.log("new ability after refresh", this.$ability)
+    const ability = this.$ability
+    const role = this.role
+    // Need update rule when browser refresh
+    let permissions = abilityRoles(role)
+    ability.update([...permissions.rules, ...ability.rules])
+    console.log("new ability after login", ability)
+    router.push({name: 'task'})
   }
 }
 </script>

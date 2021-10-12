@@ -4,7 +4,6 @@
     <ValidationObserver ref="editTask">
       <ValidationProvider name="Task" rules="min:8|required" :bails="false" v-slot="{ errors }">
         <div class="input-group mb-3">
-          {{id}} {{task}}
           <input type="text" class="form-control" v-model="task.taskEdit.title" placeholder="Enter new task name">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button" @click="onCreate">Edit</button>

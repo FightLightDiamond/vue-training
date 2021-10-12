@@ -23,7 +23,7 @@ export default new Router({
             component: TodoPage
         },
         {
-            path: '/tasks/:id',
+            path: '/task/:id',
             name: 'task.edit',
             component: EditTaskPage
         },

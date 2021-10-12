@@ -55,6 +55,18 @@ extend('notsame', {
  */
 import store from "@/store";
 
+/**
+ * CASL permission
+ */
+import { Can, abilitiesPlugin } from '@casl/vue';
+import {defineAbility} from "@casl/ability";
+const ability = defineAbility((can) => {
+  can('read', 'all')
+})
+
+Vue.use(abilitiesPlugin, ability)
+Vue.component("Can", Can)
+
 new Vue({
   router,
   store,

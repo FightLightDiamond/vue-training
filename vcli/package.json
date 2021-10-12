@@ -9,6 +9,8 @@
     "fake-api": "json-server --watch database.json --port=2000"
   },
   "dependencies": {
+    "@casl/ability": "^5.4.3",
+    "@casl/vue": "^1.2.3",
     "axios": "^0.21.4",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",

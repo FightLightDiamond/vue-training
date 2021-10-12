@@ -6,6 +6,8 @@ import router from "@/router";
 Vue.use(Vuex)
 Vue.use(notify)
 
+import {abilityRoles} from "../../casl/index"
+
 const UserModule = {
     /**
      * Data using in all component (dont need share data by other component)
@@ -14,11 +16,15 @@ const UserModule = {
         user: JSON.parse(localStorage.getItem('user')),
         isAuthenticated: !!localStorage.getItem('user')
     },
+    getters: {
+        role: (state) => state.user.role ? state.user.role : "guest"
+    },
     /**
      * Handle event on component, working with api, data on database, not update state in vuex
      */
     actions: {
-        async login({commit}, {email, password}) {
+        async login({commit}, {email, password, ability}) {
+            console.log("ability", ability)
             try {
                 // const res = await axios.get(`http://localhost:2000/users?email=${email}&password=${password}`)
                 const params = {
@@ -36,16 +42,10 @@ const UserModule = {
                   * Save user login in local storage
                   * LocalStorage in browser. save data for client
                   * */
-                    localStorage.setItem('user', JSON.stringify(res.data.pop()))
+                    const user = res.data.pop();
+                    localStorage.setItem('user', JSON.stringify(user))
                     // state.isAuthenticated = true;
-                    commit('LOGIN_SUCCESS')
-
-                    //*
-                    // Redirect to task
-                    // */
-                    // this.$router.push('/task')
-                    router.push({name: 'task'})
-
+                    commit('LOGIN_SUCCESS', {user, ability})
                 } else {
                     /*
                     * Login fail
@@ -72,8 +72,14 @@ const UserModule = {
      * Handle only logic change state vuex
      */
     mutations: {
-        async LOGIN_SUCCESS(state) {
+        async LOGIN_SUCCESS(state, {user, ability}) {
             state.isAuthenticated = true;
+            state.user = user;
+            //Update permission for user
+            let permissions = abilityRoles(user.role)
+            ability.update([...permissions.rules, ...ability.rules])
+            console.log("new ability after login", ability)
+            router.push({name: 'task'})
         },
         LOGOUT(state) {
             localStorage.removeItem('user')

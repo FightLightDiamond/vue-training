@@ -5,7 +5,9 @@
       <tr v-for="task in inactiveTasks" v-bind:key="task.id">
         <td>{{ task.title }}</td>
         <td class="text-right">
-          <router-link :to="{name: 'task.edit', params: {id: task.id}}" class="btn btn-sm btn-info">Edit</router-link>
+          <Can I="update" a="Task">
+            <router-link :to="{name: 'task.edit', params: {id: task.id}}" class="btn btn-sm btn-info">Edit</router-link>
+          </Can>
           <button class="btn btn-sm btn-danger" @click="updateTask(task.id)">Active</button>
         </td>
       </tr>

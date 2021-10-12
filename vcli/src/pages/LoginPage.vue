@@ -63,7 +63,8 @@ export default {
         if (!success) {
           return;
         }
-        this.login({email: this.email, password: this.password})
+        this.login({email: this.email, password: this.password, ability: this.$ability})
+        //After login success, we need add permission for user
       })
     }
   },
@@ -71,6 +72,7 @@ export default {
     console.log("beforeMount")
   },
   created() {
+    console.log("this.ability", this.$ability)
     /*
     * Had login
     * */
