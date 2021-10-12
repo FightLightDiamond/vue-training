@@ -6,9 +6,18 @@
         <td>{{ task.title }}</td>
         <td class="text-right">
           <Can I="update" a="Task">
-            <router-link :to="{name: 'task.edit', params: {id: task.id}}" class="btn btn-sm btn-info">Edit</router-link>
+            <router-link
+              :to="{ name: 'task.edit', params: { id: task.id } }"
+              class="btn btn-sm btn-info"
+              >Edit</router-link
+            >
           </Can>
-          <button class="btn btn-sm btn-danger" @click="updateTask(task.id)">Active</button>
+
+          <Can I="active" a="Task">
+            <button class="btn btn-sm btn-danger" @click="updateTask(task.id)">
+              Active
+            </button>
+          </Can>
         </td>
       </tr>
     </table-component>
@@ -16,23 +25,22 @@
 </template>
 
 <script>
-import TableComponent from "./TableComponent"
-import {mapGetters, mapActions} from "vuex";
+import TableComponent from "./TableComponent";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "InactiveListComponent",
   components: {
-    'table-component': TableComponent
+    "table-component": TableComponent,
   },
   computed: {
-    ...mapGetters(['inactiveTasks']),
+    ...mapGetters(["inactiveTasks"]),
   },
   methods: {
-    ...mapActions(['updateTask']),
-  }
-}
+    ...mapActions(["updateTask"]),
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

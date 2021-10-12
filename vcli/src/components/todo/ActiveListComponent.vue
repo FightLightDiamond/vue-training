@@ -5,7 +5,11 @@
       <tr v-for="task in activeTasks" v-bind:key="task.id">
         <td>{{ task.title }}</td>
         <td class="text-right">
+          <Can I="delete" a="Task">
           <button class="btn btn-sm btn-danger" @click="deleteTask(task.id)">Remove</button>
+          </Can>
+
+
         </td>
       </tr>
     </table-component>

@@ -5,7 +5,10 @@ Vue cli support .vue => not use.js
   <div class="container">
     <h1>Todo</h1>
 <!--    <create-component @event-create-from-child="onCreate"></create-component>-->
-    <create-component></create-component>
+   
+   <Can I="create" a="Task">
+         <create-component></create-component>
+   </Can>
     <inactive-list-component></inactive-list-component>
     <active-list-component></active-list-component>
     <total-component/>
