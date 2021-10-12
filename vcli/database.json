@@ -2,11 +2,13 @@
   "users": [
     {
       "id": 1,
+      "name": "User",
       "email": "user@gmail.com",
       "password": "password",
       "role": "staff"
     },
     {
+      "name": "Admin",
       "email": "admin@gmail.com",
       "password": "password",
       "id": 2,
@@ -16,13 +18,25 @@
   "tasks": [
     {
       "title": "edit after refresh browser",
-      "active": 0,
+      "active": 1,
+      "assign": 1,
       "id": 2
     },
     {
       "title": "new task by module",
       "active": 1,
+      "assign": 2,
       "id": 3
+    },
+    {
+      "title": "new component",
+      "active": 1,
+      "id": 4
+    },
+    {
+      "title": "new casl 2",
+      "active": 1,
+      "id": 5
     }
   ]
 }

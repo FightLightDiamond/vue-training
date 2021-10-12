@@ -67,6 +67,10 @@ const ability = defineAbility((can) => {
 Vue.use(abilitiesPlugin, ability)
 Vue.component("Can", Can)
 
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+
 new Vue({
   router,
   store,

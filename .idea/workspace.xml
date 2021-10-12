@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbff1e44-0880-4590-bbd9-a276990b01c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vcli/src/pages/EditTaskPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vcli/src/entities/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/database.json" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/database.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/InactiveListComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/casl/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/casl/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/components/todo/ActiveListComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/ChangePwd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/pages/LoginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vcli/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vcli/src/store/modules/task.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/store/modules/task.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vcli/src/store/modules/user.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/vcli/src/store/modules/user.module.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -132,10 +137,10 @@
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="274" y="167" key="SettingsEditor/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1631629344687" />
-    <state x="619" y="235" width="597" height="548" key="find.popup" timestamp="1633693715459">
+    <state x="560" y="199" width="597" height="548" key="find.popup" timestamp="1634041795157">
       <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state x="619" y="235" width="597" height="548" key="find.popup/-1920.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1633693715459" />
+    <state x="560" y="199" width="597" height="548" key="find.popup/-1920.25.1920.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1634041795157" />
     <state x="619" y="235" width="597" height="548" key="find.popup/-453.-1055.2560.1055/0.25.1680.1025@0.25.1680.1025" timestamp="1632743310096" />
     <state x="455" y="247" width="670" height="676" key="search.everywhere.popup" timestamp="1631544845976">
       <screen x="0" y="25" width="1680" height="1025" />
@@ -167,7 +172,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/vcli/src/pages/LoginPage.vue</url>
-          <line>61</line>
+          <line>56</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

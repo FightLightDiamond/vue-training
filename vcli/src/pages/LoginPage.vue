@@ -18,13 +18,8 @@
             <span class="error">{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-         
-        <button type="submit" class="btn btn-primary">Submit</button>
-         
-        <button class="btn btn-light" type="button" @click="goToChangePwd()" >Change Password</button>
 
-  
-   
+        <button type="submit" class="btn btn-primary">Submit</button>
         <br><br>
         <button type="submit" class="btn btn-danger" @click="goToReg()">Not Registered yet? Click here for
           Registration

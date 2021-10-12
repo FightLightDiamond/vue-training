@@ -18,12 +18,12 @@ export default new Router({
             component: LoginPage
         },
         {
-            path: '/task',
+            path: '/tasks',
             name: 'task',
             component: TodoPage
         },
         {
-            path: '/task/:id',
+            path: '/tasks/:id',
             name: 'task.edit',
             component: EditTaskPage
         },

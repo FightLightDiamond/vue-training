@@ -17,7 +17,8 @@ const UserModule = {
         isAuthenticated: !!localStorage.getItem('user')
     },
     getters: {
-        role: (state) => state.user.role ? state.user.role : "guest"
+        role: (state) => state.user.role ? state.user.role : "guest",
+        username: (state) => state.user.name ? state.user.name : "guest"
     },
     /**
      * Handle event on component, working with api, data on database, not update state in vuex

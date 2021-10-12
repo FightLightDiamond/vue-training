@@ -133,12 +133,12 @@ export default {
     console.log("beforeMount")
   },
   created() {
-    if(!this.user.isAuthenticated) {
-      /*
-      * Only login access page
-      * */
+    if(this.$ability.cannot('update', 'Password')) {
+      this.$router.push({name: "task"})
+    } else if(!this.user.isAuthenticated ) {
       this.$router.push({name: "login"})
     }
+
     console.log("mounted")
   },
   beforeMount() {

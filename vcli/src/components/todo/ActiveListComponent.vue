@@ -2,14 +2,12 @@
   <div>
     <h2>List Active</h2>
     <table-component>
-      <tr v-for="task in activeTasks" v-bind:key="task.id">
+      <tr v-for="task in activeTasks" v-bind:key="task.id" v-show="onlyViewCurrentUser(task)">
         <td>{{ task.title }}</td>
         <td class="text-right">
-          <Can I="delete" a="Task">
-          <button class="btn btn-sm btn-danger" @click="deleteTask(task.id)">Remove</button>
+          <Can I="delete" a="Task" >
+            <button class="btn btn-sm btn-danger" @click="deleteTask(task.id)">Remove</button>
           </Can>
-
-
         </td>
       </tr>
     </table-component>
@@ -22,18 +20,30 @@
 <script>
 import TableComponent from "./TableComponent"
 import {mapGetters, mapActions} from "vuex"
+import {Task} from "@/entities";
 
 export default {
   name: "ActiveListComponent",
   //tasks here
   // props: ['tasks'],
+  data() {
+    return {
+      allowed: true
+    }
+  },
   components: {
     'table-component': TableComponent
   },
   computed: {
-    ...mapGetters(['activeTasks'])
+    ...mapGetters(['activeTasks']),
   },
   methods: {
+
+    onlyViewCurrentUser(task) {
+      console.log(task, this.$can('view', currentTask))
+      const currentTask = new Task(task)
+      return this.$can('view', currentTask)
+    },
     ...mapActions(['deleteTask']),
     // onRemove(id) {
     //   /*
