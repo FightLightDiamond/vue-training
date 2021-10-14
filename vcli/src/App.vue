@@ -6,7 +6,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <li class="nav-item">
-            <router-link v-if="user.isAuthenticated===true" class="nav-link" to="/task">Task</router-link>
+            <router-link v-if="user.isAuthenticated===true" class="nav-link" to="/tasks">Task</router-link>
             <!--            <a class="nav-link" href="/task">Task</a>-->
           </li>
           <li class="nav-item">
@@ -63,7 +63,7 @@ export default {
   //   TodoPage
   // }
   computed: {
-    ...mapGetters(['role', 'username']),
+    ...mapGetters(['role', 'username', 'authId']),
     ...mapState(['user']),
   },
   methods: {
@@ -77,11 +77,10 @@ export default {
     }
   },
   created() {
-    console.log("new ability after refresh", this.$ability)
     const ability = this.$ability
     const role = this.role
     // Need update rule when browser refresh
-    let permissions = abilityRoles(role)
+    let permissions = abilityRoles(role, this.authId)
     ability.update([...permissions.rules, ...ability.rules])
     console.log("new ability after login", ability)
     router.push({name: 'task'})

@@ -1,6 +1,6 @@
 import {defineAbility} from "@casl/ability";
 
-const abilityRoles = (role) => {
+const abilityRoles = (role, authId) => {
     return defineAbility((can, cannot) => {
         switch (role) {
             case "guest":
@@ -11,8 +11,16 @@ const abilityRoles = (role) => {
                 can('update', 'Password')
                 break
             case "admin":
-                can('view', 'Task', {assign: 2})
                 can('view', 'Task')
+                can('active', 'Task')
+                can('delete', 'Task')
+                can('update', 'Task')
+                can('create', 'Task')
+                cannot('update', 'Password')
+                break
+            case "user":
+                //only show task of user login. Because {assign: authId}. ex:user2@gmail.com had id: 4
+                can('view', 'Task', {assign: authId}) // authID eq 4
                 can('active', 'Task')
                 can('delete', 'Task')
                 can('update', 'Task')
@@ -22,11 +30,11 @@ const abilityRoles = (role) => {
         }
     })
 }
+//
+// const abilityUser = (user) => {
+//     return defineAbility((can) => {
+//         can('view', 'Task', { assign: user.authId})
+//     })
+// }
 
-const abilityUser = (user) => {
-    return defineAbility((can) => {
-        can('view', 'Task', { assign: user.id})
-    })
-}
-
-export {abilityRoles, abilityUser}
+export {abilityRoles}

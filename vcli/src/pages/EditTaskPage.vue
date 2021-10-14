@@ -43,7 +43,6 @@ export default {
         if (!success) {
           return;
         }
-        alert(this.task.taskEdit.title)
         // we create new task on here
         const task = {id: this.id, title: this.task.taskEdit.title}
         this.taskName = ''

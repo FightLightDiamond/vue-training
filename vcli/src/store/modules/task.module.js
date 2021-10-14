@@ -30,10 +30,26 @@ const TaskModule = {
             state.tasks[index].active = 1
         },
         EDIT_TASK(state, {id, title}) {
-            alert(id + title)
             const index = state.tasks.findIndex((obj => obj.id === id))
-            console.log('state.tasks[index]', state.tasks[index])
-            // state.tasks[index].title = title
+            if(index) state.tasks[index].title = title
+            Vue.notify({
+                type: 'success',
+                title: 'Task message',
+                text: 'Edit task successfully!',
+            })
+
+            router.push({name: 'task'})
+        },
+        ASSIGN_TASK(state, {id, assign}) {
+            const index = state.tasks.findIndex((obj => obj.id === id))
+            if(index) state.tasks[index].assign = assign
+            Vue.notify({
+                type: 'success',
+                title: 'Task message',
+                text: 'Assign task successfully!',
+            })
+
+            router.push({name: 'task'})
         },
         async REMOVE_TASK(state, id) {
             const index = state.tasks.findIndex((obj => obj.id === id))
@@ -114,22 +130,35 @@ const TaskModule = {
             }
         },
         async editTask({commit}, {id, title}) {
-
             try {
                 const res = await TaskService.update(id, {title})
                 if (res.status === 200) {
                     commit('EDIT_TASK', {id, title})
-
-                    Vue.notify({
-                        type: 'success',
-                        title: 'Task message',
-                        text: 'Edit task successfully!',
-                    })
                 } else {
                     Vue.notify({
                         type: 'error',
                         title: 'Task message',
                         text: 'Edit task fail!'
+                    })
+                }
+            } catch (e) {
+                Vue.notify({
+                    type: 'error',
+                    title: 'Task message',
+                    text: e.toString()
+                })
+            }
+        },
+        async assignTask({commit}, {id, assign}) {
+            try {
+                const res = await TaskService.update(id, {assign})
+                if (res.status === 200) {
+                    commit('ASSIGN_TASK', {id, assign})
+                } else {
+                    Vue.notify({
+                        type: 'error',
+                        title: 'Task message',
+                        text: 'Assign task fail!'
                     })
                 }
             } catch (e) {

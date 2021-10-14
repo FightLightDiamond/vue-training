@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "User",
-      "email": "user@gmail.com",
+      "name": "Staff",
+      "email": "staff@gmail.com",
       "password": "password",
       "role": "staff"
     },
@@ -13,30 +13,52 @@
       "password": "password",
       "id": 2,
       "role": "admin"
+    },
+    {
+      "name": "User",
+      "email": "user@gmail.com",
+      "password": "password",
+      "id": 3,
+      "role": "user"
+    },
+    {
+      "name": "User2",
+      "email": "user2@gmail.com",
+      "password": "password",
+      "id": 4,
+      "role": "user"
     }
   ],
   "tasks": [
     {
       "title": "edit after refresh browser",
       "active": 1,
-      "assign": 1,
+      "assign": 3,
       "id": 2
     },
     {
       "title": "new task by module",
       "active": 1,
-      "assign": 2,
+      "assign": 3,
       "id": 3
     },
     {
       "title": "new component",
       "active": 1,
+      "assign": 4,
       "id": 4
     },
     {
       "title": "new casl 2",
       "active": 1,
+      "assign": 4,
       "id": 5
+    },
+    {
+      "title": "1998000-999991d7 edit task",
+      "active": 0,
+      "assign": 1,
+      "id": 6
     }
   ]
 }

@@ -1,9 +1,13 @@
 <template>
   <div>
     <h2>List Active</h2>
+    {{JSON.stringify(this.activeTasks)}}
     <table-component>
-      <tr v-for="task in activeTasks" v-bind:key="task.id" v-show="onlyViewCurrentUser(task)">
+      <tr v-for="(task, index) in activeTasks" v-bind:key="task.id" v-show="onlyViewCurrentUser(task)">
         <td>{{ task.title }}</td>
+        <td>
+          <b-form-select @change="onAssign(index, task.id)"  v-model="task.assign" :options="optionsUser"></b-form-select>
+        </td>
         <td class="text-right">
           <Can I="delete" a="Task" >
             <button class="btn btn-sm btn-danger" @click="deleteTask(task.id)">Remove</button>
@@ -28,38 +32,35 @@ export default {
   // props: ['tasks'],
   data() {
     return {
-      allowed: true
+      selected: null,
+      // options: [
+      //   { value: null, text: 'Please select an option' },
+      //   { value: 'a', text: 'This is First option' },
+      //   { value: 'b', text: 'Selected Option' },
+      //   { value: { C: '3PO' }, text: 'This is an option with object value' },
+      //   { value: 'd', text: 'This one is disabled', disabled: true }
+      // ]
     }
   },
   components: {
     'table-component': TableComponent
   },
   computed: {
-    ...mapGetters(['activeTasks']),
+    ...mapGetters(['activeTasks', 'optionsUser']),
+  },
+  created() {
+    this.getUsers()
   },
   methods: {
-
     onlyViewCurrentUser(task) {
-      console.log(task, this.$can('view', currentTask))
       const currentTask = new Task(task)
       return this.$can('view', currentTask)
     },
-    ...mapActions(['deleteTask']),
-    // onRemove(id) {
-    //   /*
-    //   * I will use axios remove task
-    //   * Call to api remove task
-    //   *
-    //   * Use mutations on vuex
-    //   * */
-    //   this.REMOVE_TASK(id)
-    // },
-    // findIndexTaskById(id) {
-    //   return this.tasks.findIndex((obj => obj.id === id))
-    // },
-    // removeTaskByIndex(index) {
-    //   this.tasks.splice(index, 1)
-    // },
+    ...mapActions(['deleteTask', 'getUsers', 'assignTask']),
+    onAssign(index, id) {
+      const {assign} = this.activeTasks[index]
+      this.assignTask({id, assign})
+    }
   }
 }
 </script>
