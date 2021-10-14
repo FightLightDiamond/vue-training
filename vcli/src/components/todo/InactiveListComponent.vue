@@ -1,9 +1,19 @@
 <template>
   <div>
+         {{JSON.stringify(this.activeTasks)}}
     <h2>List inactive</h2>
+   
+
     <table-component>
-      <tr v-for="task in inactiveTasks" v-bind:key="task.id">
+      <tr v-for="(task, index) in inactiveTasks" v-bind:key="task.id">
         <td>{{ task.title }}</td>
+        <td>
+          <b-form-select
+            @change="onAssign(index, task.id)"
+            v-model="task.assign"
+            :options="optionsUser"
+          ></b-form-select>
+        </td>
         <td class="text-right">
           <Can I="update" a="Task">
             <router-link
@@ -34,10 +44,14 @@ export default {
     "table-component": TableComponent,
   },
   computed: {
-    ...mapGetters(["inactiveTasks"]),
+    ...mapGetters(["inactiveTasks", 'optionsUser']),
   },
   methods: {
-    ...mapActions(["updateTask"]),
+    ...mapActions(["updateTask","getUsers", "assignTask"]),
+    onAssign(index, id) {
+      const { assign } = this.activeTasks[index];
+      this.assignTask({ id, assign });
+    },
   },
 };
 </script>
