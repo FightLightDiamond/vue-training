@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2>List Active</h2>
-    {{JSON.stringify(this.activeTasks)}}
     <table-component>
       <tr v-for="(task, index) in activeTasks" v-bind:key="task.id" v-show="onlyViewCurrentUser(task)">
         <td>{{ task.title }}</td>

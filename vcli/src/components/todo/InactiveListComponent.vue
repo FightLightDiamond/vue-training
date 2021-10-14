@@ -1,9 +1,6 @@
 <template>
   <div>
-         {{JSON.stringify(this.activeTasks)}}
     <h2>List inactive</h2>
-   
-
     <table-component>
       <tr v-for="(task, index) in inactiveTasks" v-bind:key="task.id">
         <td>{{ task.title }}</td>
@@ -49,7 +46,8 @@ export default {
   methods: {
     ...mapActions(["updateTask","getUsers", "assignTask"]),
     onAssign(index, id) {
-      const { assign } = this.activeTasks[index];
+        // const { assign } = this.activeTasks[index];
+      const { assign } = this.inactiveTasks[index];
       this.assignTask({ id, assign });
     },
   },
