@@ -54,8 +54,6 @@
 // import TodoPage from "@/pages/TodoPage";
 import {mapState, mapGetters, mapMutations} from "vuex";
 import {abilityRoles} from "./casl/index"
-import router from "@/router";
-
 
 export default {
   name: 'App',
@@ -83,7 +81,7 @@ export default {
     let permissions = abilityRoles(role, this.authId)
     ability.update([...permissions.rules, ...ability.rules])
     console.log("new ability after login", ability)
-    router.push({name: 'task'})
+    // router.push({name: 'task'})
   }
 }
 </script>

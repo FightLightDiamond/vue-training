@@ -5,6 +5,7 @@ import LoginPage from "@/pages/LoginPage";
 import Registration from "@/pages/Registration";
 import ChangePwd from "@/pages/ChangePwd";
 import EditTaskPage from "@/pages/EditTaskPage";
+import ProfilePage from "../pages/ProfilePage";
 
 
 
@@ -36,6 +37,11 @@ export default new Router({
             path: '/ChangePwd',
             name: 'ChangePwd',
             component: ChangePwd
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: ProfilePage
         },
 
     ],

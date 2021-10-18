@@ -46,7 +46,7 @@
 
 <script>
 import axios from "axios";
-import {mapState} from "vuex"
+import {mapState, mapGetters} from "vuex"
 
 export default {
   name: "ChangePwd",
@@ -55,14 +55,14 @@ export default {
       /*
       * How to get self id user had login
       * */
-      id: this.getUserId(),
       password: '',
       new_password: '',
       confirm_password: ''
     }
   },
   computed: {
-    ...mapState(['user'])
+    ...mapState(['user']),
+    ...mapGetters(['authId'])
   },
   methods: {
     goToLogin() {
@@ -108,7 +108,7 @@ export default {
         * PATCH: update not remove data not same
         * */
         // const res = await axios.put(`http://localhost:2000/users/${this.id}`, {password: this.password})
-        const res = await axios.patch(`http://localhost:2000/users/${this.id}`, {password: this.new_password})
+        const res = await axios.patch(`http://localhost:2000/users/${this.authId}`, {password: this.new_password})
         console.log('Res chang password', res)
         if (res.status === 200) {
           alert('Change password success')
@@ -119,15 +119,6 @@ export default {
         alert(e.toString())
       }
     },
-    getUserId: function () {
-      // type string
-      const userLocalStorage = localStorage.getItem('user')
-      console.log('userLocalStorage', userLocalStorage)
-      //convert to object
-      const user = JSON.parse(userLocalStorage)
-      console.log('user', user)
-      return user.id
-    }
   },
   beforeCreate() {
     console.log("beforeMount")
