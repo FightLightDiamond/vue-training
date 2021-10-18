@@ -13,15 +13,15 @@ const UserModule = {
      * Data using in all component (dont need share data by other component)
      */
     state: {
-        user: JSON.parse(localStorage.getItem('user')),
+        userLogin: JSON.parse(localStorage.getItem('user')),
         isAuthenticated: !!localStorage.getItem('user'),
         users: []
     },
     getters: {
-        role: (state) => state.user.role ? state.user.role : "guest",
-        username: (state) => state.user.name ? state.user.name : "guest",
+        role: (state) => state.userLogin.role ? state.userLogin.role : "guest",
+        username: (state) => state.userLogin.name ? state.userLogin.name : "guest",
         // never id eq 0, if id = 0 then user not login
-        authId: (state) => state.user.id ? state.user.id : 0,
+        authId: (state) => state.userLogin.id ? state.userLogin.id : 0,
         optionsUser: (state) => {
             const optionUser = state.users.map((user) => {
                 return { value: user.id, text: user.email }

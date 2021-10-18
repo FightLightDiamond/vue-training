@@ -25,7 +25,7 @@ const abilityRoles = (role, authId) => {
                 can('delete', 'Task')
                 can('update', 'Task')
                 can('create', 'Task')
-                cannot('update', 'Password')
+                can('update', 'Password')
                 break
         }
     })
