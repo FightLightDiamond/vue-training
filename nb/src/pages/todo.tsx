@@ -1,7 +1,7 @@
-import FanContainer from '../containers/fan.container'
+import TodoContainer from '../features/todo/Todo'
 
-function HomePage() {
-    return (<FanContainer/>)
+const TodoPage = ()=> {
+    return (<TodoContainer/>)
 }
 
-export default HomePage
+export default TodoPage

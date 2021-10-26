@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "vue-router": "^3.5.2"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }
