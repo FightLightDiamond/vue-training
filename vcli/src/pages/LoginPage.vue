@@ -24,6 +24,10 @@
         <button type="submit" class="btn btn-danger" @click="goToReg()">Not Registered yet? Click here for
           Registration
         </button>
+        <br><br>
+        <button type="submit" class="btn btn-warning" @click="test()">
+          {{name}}
+        </button>
 
       </form>
     </ValidationObserver>
@@ -33,8 +37,32 @@
 <script>
 // import axios from "axios"
 import {mapState, mapActions} from "vuex";
+var myMixin = {
+  //Data tiến hành merge và ưu tiên lấy giá trị component
+  data: function () {
+    return {
+      email: 'email',
+      password: 'password',
+      name: 'mixin'
+    }
+  },
+  //Hook sẽ chạy hook mixin trước rồi chạy hook component
+  created: function () {
+    console.log('mixin hook called')
+  },
+  //Methods tiến hành merge và ưu tiên lấy component
+  methods: {
+    test: function () {
+      alert('Test function mixin')
+    },
+    onLogin() {
+      alert('Mixin login')
+    }
+  }
+}
 
 export default {
+  mixins: [myMixin],
   name: "LoginPage",
   data() {
     return {
@@ -67,6 +95,7 @@ export default {
     console.log("beforeMount")
   },
   created() {
+    console.log('component hook called')
     console.log("this.ability", this.$ability)
     /*
     * Had login
